@@ -1,0 +1,128 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment1.txt
+{
+    using Assignment1.txt.EmployeeApp;
+    using System;
+
+    namespace EmployeeApp
+    {
+        class Employee
+        {
+            // Private fields:
+
+            private string name;
+            private int employeeId;
+            private double salary;
+            private string department;
+
+            // Constructor:
+
+            public Employee(string name, int employeeId, double salary, string department)
+            {
+                SetName(name);
+                this.employeeId = employeeId;
+                SetSalary(salary);
+                SetDepartment(department);
+            }
+
+            // SetName:
+
+            public void SetName(string name)
+            {
+                if (!string.IsNullOrWhiteSpace(name))
+                {
+                    this.name = name;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid name.It cannot be empty.");
+                }
+            }
+
+            // GetName:
+
+            public string GetName()
+            {
+                return name;
+            }
+
+            // SetSalary: 
+
+            public void SetSalary(double salary)
+            {
+                if (salary > 0)
+                {
+                    this.salary = salary;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid salary.It must be positive.");
+                }
+            }
+
+            // GetSalary:
+
+            public double GetSalary()
+            {
+                return salary;
+            }
+
+            // SetDepartment:
+
+            public void SetDepartment(string department)
+            {
+                if (!string.IsNullOrWhiteSpace(department))
+                {
+                    this.department = department;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid department. It cannot be empty.");
+                }
+            }
+
+            public string GetDepartment()
+            {
+                return department;
+            }
+
+            public int GetEmployeeId()
+            {
+                return employeeId;
+            }
+
+            // DisplayInfo:
+
+            public void DisplayInfo()
+            {
+                Console.WriteLine("Employee Details:");
+                Console.WriteLine($"Name       : {name}");
+                Console.WriteLine($"Employee ID: {employeeId}");
+                Console.WriteLine($"Salary     : {salary}");
+                Console.WriteLine($"Department : {department}");
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            Employee emp = new Employee("Adan", 102, 100000, "IT");
+
+            emp.DisplayInfo();
+
+            emp.SetName("");
+            emp.SetSalary(-2000);  
+            emp.SetDepartment("HR");
+
+            Console.WriteLine("Updated Info:");
+            emp.DisplayInfo();
+        }
+    }
+}

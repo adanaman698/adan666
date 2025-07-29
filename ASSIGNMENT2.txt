@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment2.txt
+{
+
+    using System;
+
+    namespace SchoolSystem
+    {
+       
+        class Person
+        {
+            protected string name;
+            protected int age;
+
+            public Person(string name, int age)
+            {
+                this.name = name;
+                this.age = age;
+            }
+
+            public virtual void DisplayInfo()
+            {
+                Console.WriteLine("Name: " + name);
+                Console.WriteLine("Age: " + age);
+            }
+
+            public void Greet()
+            {
+                Console.WriteLine($"Hello, My name is {name}");
+            }
+        }
+
+        class Student : Person
+        {
+            private string studentId;
+            private double gpa;
+
+            public Student(string name, int age, string studentId, double gpa)
+                : base(name, age)
+            {
+                this.studentId = studentId;
+                this.gpa = gpa;
+            }
+
+            public override void DisplayInfo()
+            {
+                base.DisplayInfo();
+                Console.WriteLine("Student ID: " + studentId);
+                Console.WriteLine("GPA: " + gpa);
+            }
+        }
+
+        
+        class Teacher : Person
+        {
+            private string subject;
+            private double salary;
+
+            public Teacher(string name, int age, string subject, double salary)
+                : base(name, age)
+            {
+                this.subject = subject;
+                this.salary = salary;
+            }
+
+            public override void DisplayInfo()
+            {
+                base.DisplayInfo();
+                Console.WriteLine("Subject: " + subject);
+                Console.WriteLine("Salary: $" + salary);
+            }
+
+            public void Teach()
+            {
+                Console.WriteLine("Teaching " + subject + "...");
+            }
+        }
+
+        
+        class Staff : Person
+        {
+            private string position;
+
+            public Staff(string name, int age, string position)
+                : base(name, age)
+            {
+                this.position = position;
+            }
+
+            public override void DisplayInfo()
+            {
+                base.DisplayInfo();
+                Console.WriteLine("Position: " + position);
+            }
+
+            public void Work()
+            {
+                Console.WriteLine("Working as " + position + "...");
+            }
+        }
+
+        
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Student s = new Student("Aman", 20, "St.1001", 3.8);
+                Teacher t = new Teacher("Miss Ashmal", 35, "Math", 25000);
+                Staff st = new Staff("Mr. Asif", 40, "Head of our Heart");
+
+                Console.WriteLine("Student Info");
+                s.Greet();
+                s.DisplayInfo();
+
+                Console.WriteLine("Teacher Info");
+                t.Greet();
+                t.DisplayInfo();
+                t.Teach();
+
+                Console.WriteLine("Staff Info");
+                st.Greet();
+                st.DisplayInfo();
+                st.Work();
+            }
+        }
+    }
+}
